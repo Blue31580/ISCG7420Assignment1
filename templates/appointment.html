@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Appointment{% endblock %}
+
+{% block content %}
+<h1>Appointment</h1>
+<ul>
+    {% for post in object_list %}
+    <li><a href="{% url 'appointment' post.id %}">{{ post.appointment_details }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

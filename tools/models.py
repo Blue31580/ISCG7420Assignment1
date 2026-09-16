@@ -10,4 +10,4 @@ class Appointment(models.Model):
     appointment_details = models.TextField()
 
     def __str__(self):
-        return self.appointment_details
+        return self.appointment_details + " - " + self.appointment_status
