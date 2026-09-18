@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 from tools.models import Appointment
 
@@ -12,3 +12,8 @@ class HomeView(ListView):
 class AppointmentView(ListView):
     model = Appointment
     template_name = 'appointment.html'
+
+class AppointmentCreateView(CreateView):
+    model = Appointment
+    template_name = 'appointment_create.html'
+    fields = ['appointment_details', 'appointment_status']
