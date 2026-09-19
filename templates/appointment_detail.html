@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ appointment.appointment_details }}{% endblock %}
+{% block content %}
+    <h1>{{ appointment.appointment_details }}</h1>
+    <p>Doctor: {{ appointment.user }}</p>
+    <p>Date: {{ appointment.appointment_date }}</p>
+    <p>Time: {{ appointment.appointment_time }}</p>
+    <p>Status: {{ appointment.appointment_status }}</p>
+    <a href="{% url 'home' %}">Back</a>
+{% endblock %}

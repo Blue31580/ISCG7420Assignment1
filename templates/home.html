@@ -4,8 +4,8 @@
 {% block content %}
 <h1>Home</h1>
 <ul>
-    {%  for post in object_list %}
-    <li>{{ post.appointment_details }}</li>
+    {%  for appointment in object_list %}
+    <li><a href="{% url 'appointment_detail' appointment.pk %}">{{ appointment.appointment_details }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
