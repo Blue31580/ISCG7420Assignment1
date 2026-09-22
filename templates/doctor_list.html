@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Doctors {% endblock %}
+{% block content %}
+
+    <h1>Doctors</h1>
+
+    {% for doctor in doctors %}
+        <div class="card mb-2 p3">
+            <h5>{{ doctor.name }}</h5>
+            <p>{{ doctor.specialization }} - Room {{ doctor.room_number }}</p>
+            <p>Fee: ${{ doctor.consultation_fee }}</p>
+            <a class="btn btn-primary" href="{% url 'doctor_slots' doctor.id %}">View Slots</a>
+        </div>
+    {% empty %}
+        <p>No doctors available.</p>
+    {% endfor %}
+{% endblock %}

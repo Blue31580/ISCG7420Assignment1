@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Cancel Appointment {% endblock %}
+{% block content %}
+<h1>Cancel Appointment</h1>
+<p>{{ appointment.slot.doctor.name }} - {{ appointment.slot.appointment_date }} - {{ appointment.slot.appointment_time }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Cancel Appointment</button>
+    </form>
+{% endblock %}

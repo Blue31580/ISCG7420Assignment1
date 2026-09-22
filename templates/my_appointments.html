@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} My Appointments {% endblock %}
+{% block content %}
+
+    <h1> My Appointments </h1>
+    {% for appt in appointments %}
+        <div class="card mb-2 p-3">
+            <p>Doctor: {{ appt.slot.doctor.name }}</p>
+            <p>{{ appt.slot.appointment_date }} - {{ appt.slot.appointment_time }}</p>
+            <p>Status: {{ appt.get_appointment_status_display }}</p>
+            <a class="btn btn-primary" href="{% url 'cancel_appointment' appt.id %}">Cancel Appointment</a>
+        </div>
+    {% empty %}
+        <p>No appointments found.</p>
+    {% endfor %}
+{% endblock %}

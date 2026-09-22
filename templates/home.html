@@ -3,9 +3,5 @@
 
 {% block content %}
 <h1>Home</h1>
-<ul>
-    {%  for appointment in object_list %}
-    <li><a href="{% url 'appointment_detail' appointment.pk %}">{{ appointment.appointment_details }}</a></li>
-    {% endfor %}
-</ul>
+    <a class="btn btn-primary" href="{% url 'doctor_list' %}">View Doctors</a>
 {% endblock %}

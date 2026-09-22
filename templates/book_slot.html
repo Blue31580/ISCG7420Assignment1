@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Book Appointment {% endblock %}
+
+{% block content %}
+    <h1>Book with {{ slot.doctor.name }}</h1>
+    <p>{{ slot.appointment_date }} - {{ slot.appointment_time }} to {{ slot.appointment_end_time }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book Slot</button>
+    </form>
+{% endblock %}
