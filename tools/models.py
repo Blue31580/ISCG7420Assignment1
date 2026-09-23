@@ -6,12 +6,16 @@ from django.urls import reverse
 # Create your models here.
 
 class Doctor(models.Model):
-    name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='doctor_profile')
     specialization = models.CharField(max_length=100)
     room_number = models.CharField(max_length=100)
     bio = models.TextField()
     profile_pic = models.ImageField(upload_to='images/profile/', blank=True, null=True)
     consultation_fee = models.DecimalField(max_digits=10, decimal_places=2)
+
+    @property
+    def name(self):
+        return self.user.get_full_name() or self.user.username
 
     def __str__(self):
         return self.name
