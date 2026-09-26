@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Manage Doctors{% endblock %}
+{% block content %}
+<h1>Doctors</h1>
+<a class="btn btn-success mb-3" href="{% url 'dashboard_doctor_add' %}">Add Doctor</a>
+    {% for doctor in doctors %}
+    <div class="card mb-2 p-3 d-flex flex-row justify-content-between align-items-center">
+        <span>{{ doctor.name }} - {{ doctor.specialization }} (Room {{ doctor.room_number }})</span>
+        <span>
+            <a class="btn btn-secondary btn-sm" href="{% url 'dashboard_doctor_edit' doctor.id %}">Edit</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'dashboard_doctor_delete' doctor.id %}">Delete</a>
+        </span>
+    </div>
+    {% empty %}
+        <p>No Doctors Available</p>
+    {% endfor %}
+<a class="btn btn-primary" href="{% url 'dashboard_home' %}">Back to Dashboard</a>
+{% endblock %}

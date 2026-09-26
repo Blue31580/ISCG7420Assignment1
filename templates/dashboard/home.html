@@ -1,0 +1,28 @@
+<!--Superuser Homepage-->
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h1>Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-3 mb-2">
+                <h3>Doctors</h3>
+                <p>Total Doctors: {{ doctor_count }}</p>
+                <a class="btn btn-primary btn-sm" href="{% url 'dashboard_doctors' %}">View Doctors</a>
+            </div>
+        </div>
+    <div class="col-md-4">
+        <div class="card p-3 mb-2">
+            <h3>Slots</h3>
+            <p>{{ slot_count }}</p>
+        </div>
+    </div>
+        <div class="col-md-4">
+            <div class="card p-3 mb-2">
+            <h3>Appointments</h3>
+            <p>{{ appointment_count }}</p>
+            <a class="btn btn-primary btn-sm" href="{% url 'dashboard_appointments' %}">Manage Appointments</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

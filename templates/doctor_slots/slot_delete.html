@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Delete Slot{% endblock %}
+{% block content %}
+    <h1>Delete Slot?</h1>
+    <p>{{ slot.appointment_date }} - {{ slot.appointment_time }} to {{ slot.appointment_end_time }}</p>
+    {% if slot.is_booked %}
+        <p class="text-danger">Warning: This Slot is Booked</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'doctor_dashboard' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

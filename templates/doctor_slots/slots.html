@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}My Slots{% endblock %}
+{% block content %}
+    <h1>Available Slots</h1>
+    <a class="btn btn-success mb-3" href="{% url 'doctor_slot_add' %}">Add Slot</a>
+    {% for slot in slots %}
+        <div class="card mb-2 p-3 d-flex flex-row justify-content-between align-items-center">
+            <span>{{ slot.appointment_date }} - {{ slot.appointment_time }} to {{ slot.appointment_end_time }}
+                ({% if slot.is_booked %}Booked
+                {% else %}Available{% endif %})
+            </span>
+            <span>
+                <a class="btn btn-secondary btn-sm" href="{% url 'doctor_slot_edit' slot.pk%}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'doctor_slot_delete' slot.pk%}">Delete</a>
+            </span>
+        </div>
+    {% empty %}
+    <p>No Slots Added</p>
+    {% endfor %}
+    <a href="{% url 'doctor_appointments' %}">View Appointments</a>
+{% endblock %}
